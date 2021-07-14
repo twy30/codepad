@@ -1,0 +1,6 @@
+review.bash: `Cases/review/no/carriage-return/CR-LF`
+Cases/review/no/carriage-return/CR-LF
+review.bash: `Cases/review/no/carriage-return/CR-LF` contains at least 1 carriage return.
+review.bash: `Cases/review/no/carriage-return/CR-LF` contains at least 1 trailing whitespace.
+review.bash: `Cases/review/no/carriage-return/LF`
+Cases/review/no/carriage-return/LF

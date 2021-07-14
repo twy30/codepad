@@ -1,0 +1,3 @@
+review.bash: `Cases/review/skip/empty-file/empty`
+review.bash: Skip empty file `Cases/review/skip/empty-file/empty`.
+review.bash: `Cases/review/skip/empty-file/non-empty`

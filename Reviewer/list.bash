@@ -1,63 +1,31 @@
 #!/bin/bash
-# Version: 2021-Jul-06 19:39:20
+# Version: 2021-Jul-13 16:16:36
 
-# list.bash _Input_Folder_Path_
+# list.bash [FILE]...
 #
-# List files by their versions.
+# List FILE by its `Version`.
+#
+# * `.log` files are excluded.
+# * Directory contents are listed recursively.
 
-myInputFolderPath=${1:-.}
+. "$(dirname "${0}")/_lib.bash"
 
-if [ ! -d "${myInputFolderPath}" ]
-then
-    echo "$(basename "${0}"): \`${myInputFolderPath}\` must be a folder." >&2
-    exit 2
-fi
+function myGetFileVersionList {
+    for myInputFilePath
+    do
+        if [ ! -r "${myInputFilePath}" ]
+        then
+            continue
+        fi
 
-export myFileVersionRegexp='^[^V]*Version: [[:digit:]]{4}-[[:alpha:]]{3}-[[:digit:]]{2} [[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}$'
-
-function myGetFileVersion {
-    local myInputFilePath=${1}
-
-    if [ ! -f "${myInputFilePath}" ]
-    then
-        echo "$(basename "${0}"): \`${myInputFilePath}\` must be a file." >&2
-        return 1
-    fi
-
-    local myInputFileVersion=
-    local myInputFileName=$(basename "${myInputFilePath}")
-    local myInputFileExtensionName=${myInputFileName##*.}
-    case "${myInputFileExtensionName}" in
-        'bash')
-            myInputFileVersion=$(head --lines=2 "${myInputFilePath}" | tail --lines=1)
-        ;;
-
-        'md')
-            myInputFileVersion=$(head --lines=2 "${myInputFilePath}" | tail --lines=1)
-        ;;
-    esac
-
-    local myInputFileSortableVersion='0000000000000000000'
-    if [[ "${myInputFileVersion}" =~ ${myFileVersionRegexp} ]]
-    then
-        myInputFileSortableVersion=${myInputFileVersion##*Version: }
-        myInputFileSortableVersion=${myInputFileSortableVersion/Jan/01}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Feb/02}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Mar/03}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Apr/04}
-        myInputFileSortableVersion=${myInputFileSortableVersion/May/05}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Jun/06}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Jul/07}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Aug/08}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Sep/09}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Oct/10}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Nov/11}
-        myInputFileSortableVersion=${myInputFileSortableVersion/Dec/12}
-        myInputFileSortableVersion=$(echo -n "${myInputFileSortableVersion}" | sed --regexp-extended 's/[[:alpha:]]{3}/00/')
-    fi
-
-    echo "${myInputFileSortableVersion} ${myInputFilePath}"
+        if [ -d "${myInputFilePath}" ]
+        then
+            find "${myInputFilePath}" -type f -not -name '*.log' -print0 | xargs --null ./version.bash
+        elif [ -f "${myInputFilePath}" -a "$(myGetExtensionName "${myInputFilePath}")" != 'log' ]
+        then
+            echo "$(myGetFileVersionView "${myInputFilePath}")"
+        fi
+    done
 }
-export -f myGetFileVersion
 
-find "${myInputFolderPath}" -type f -not -name '*.log' -exec bash -c 'myGetFileVersion "${0}"' '{}' \; | sort --reverse
+myGetFileVersionList "${@}" | sort --reverse

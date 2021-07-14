@@ -1,5 +1,0 @@
----
-Version: XXXXXXXXXXXXXXXXXXXX
----
-
-# Hello, World!

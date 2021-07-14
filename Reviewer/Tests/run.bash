@@ -1,30 +1,49 @@
 #!/bin/bash
-# Version: 2021-Jul-06 19:39:48
+# Version: 2021-Jul-13 16:17:21
 
 # run.bash
 #
-# Run all tests and list `Outputs` changes (if any).
+# Run all tests; then list test result changes.
 
-pushd "$(dirname "${0}")" > /dev/null
+cd "$(dirname "${0}")"
 
-rm --recursive Outputs/
-mkdir Outputs/
+# Purge test results.
+rm --recursive Results/*
 
-mkdir Outputs/done
-echo '1. To create the `Done` log file.' > Outputs/done/zzzzzzz-my-log-3-Doing.md
-../done.bash Outputs/done/zzzzzzz-my-log-3-Doing.md
-echo '2. To append to the `Done` log file.' > Outputs/done/zzzzzzz-my-log-3-Doing.md
-../done.bash Outputs/done/zzzzzzz-my-log-3-Doing.md
+# Run tests.
 
-../list.bash Inputs/list/ > Outputs/list.log
+function myRunTest {
+    local -r myTestCommand=${1}
+    local -r myTestCase=${2}
 
-../spellcheck.bash Inputs/spellcheck/* > Outputs/spellcheck.log
+    local -r myTestName=${myTestCase//\//.}
+    eval "${myTestCommand} Cases/${myTestCase}/*" > "Results/${myTestName}.stdout.log" 2> "Results/${myTestName}.stderr.log"
+}
 
-mkdir Outputs/to-do
-../to-do.bash Outputs/to-do
+myRunTest 'echo' 'run'
 
-../validate.bash Inputs/validate/* > Outputs/validate.log
+#myRunTest '../review.bash' '_lib/skip/non-file'
+myRunTest '../review.bash' 'review/Bash/validate-header-end'
+myRunTest '../review.bash' 'review/Bash/validate-header-start'
+myRunTest '../review.bash' 'review/Bash/validate-version'
+myRunTest '../review.bash' 'review/end/with-1-newline'
+myRunTest '../review.bash' 'review/Markdown/validate-header-end'
+myRunTest '../review.bash' 'review/Markdown/validate-header-start'
+myRunTest '../review.bash' 'review/Markdown/validate-version'
+myRunTest '../review.bash' 'review/no/carriage-return'
+myRunTest '../review.bash' 'review/no/trailing-whitespace'
+myRunTest '../review.bash' 'review/skip/empty-file'
+myRunTest '../review.bash' 'review/spellcheck/file-contents'
+myRunTest '../review.bash' 'review/spellcheck/file-path'
 
-git status Outputs/
+myRunTest '../version.bash' '_lib/skip/non-file'
+myRunTest '../version.bash' 'version/MMM'
+myRunTest '../version.bash' 'version/version'
 
-popd > /dev/null
+chmod u-r Cases/_lib/skip/unreadable-file/unreadable
+#myRunTest '../review.bash' '_lib/skip/unreadable-file'
+myRunTest '../version.bash' '_lib/skip/unreadable-file'
+chmod u+r Cases/_lib/skip/unreadable-file/unreadable
+
+# List test result changes.
+git status --porcelain Results/
