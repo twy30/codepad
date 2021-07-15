@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Jul-13 16:16:36
+# Version: 2021-Jul-15 01:31:52
 
 # list.bash [FILE]...
 #
@@ -7,8 +7,11 @@
 #
 # * `.log` files are excluded.
 # * Directory contents are listed recursively.
+# * Unreadable files are excluded.
 
-. "$(dirname "${0}")/_lib.bash"
+readonly myDirName=$(dirname "${0}")
+
+. "${myDirName}/_lib.bash"
 
 function myGetFileVersionList {
     for myInputFilePath
@@ -20,10 +23,10 @@ function myGetFileVersionList {
 
         if [ -d "${myInputFilePath}" ]
         then
-            find "${myInputFilePath}" -type f -not -name '*.log' -print0 | xargs --null ./version.bash
+            find "${myInputFilePath}" -type f -not -name '*.log' -print0 | xargs --null "${myDirName}/version.bash"
         elif [ -f "${myInputFilePath}" -a "$(myGetExtensionName "${myInputFilePath}")" != 'log' ]
         then
-            echo "$(myGetFileVersionView "${myInputFilePath}")"
+            myListFileVersion "${myInputFilePath}"
         fi
     done
 }

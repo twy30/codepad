@@ -1,0 +1,3 @@
+review.bash: `Cases/_lib/file-readability/readable.bash`
+review.bash: `Cases/_lib/file-readability/unreadable.bash`
+review.bash: Skip unreadable file `Cases/_lib/file-readability/unreadable.bash`.

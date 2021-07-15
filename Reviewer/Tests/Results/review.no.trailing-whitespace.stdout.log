@@ -1,8 +1,0 @@
-review.bash: `Cases/review/no/trailing-whitespace/no-trailing-whitespace`
-Cases/review/no/trailing-whitespace/no-trailing-whitespace
-review.bash: `Cases/review/no/trailing-whitespace/trailing-space`
-Cases/review/no/trailing-whitespace/trailing-space
-review.bash: `Cases/review/no/trailing-whitespace/trailing-space` contains at least 1 trailing whitespace.
-review.bash: `Cases/review/no/trailing-whitespace/trailing-tab`
-Cases/review/no/trailing-whitespace/trailing-tab
-review.bash: `Cases/review/no/trailing-whitespace/trailing-tab` contains at least 1 trailing whitespace.

@@ -1,0 +1,5 @@
+review.bash: `Cases/review/end-of-file-newlines/0-newline`
+review.bash: `Cases/review/end-of-file-newlines/0-newline` ends with 0 newline.
+review.bash: `Cases/review/end-of-file-newlines/1-newline`
+review.bash: `Cases/review/end-of-file-newlines/2-newlines`
+review.bash: `Cases/review/end-of-file-newlines/2-newlines` ends with more than 1 newline.

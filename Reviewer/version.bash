@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Jul-13 16:15:00
+# Version: 2021-Jul-15 01:31:21
 
 # version.bash [FILE]...
 #
@@ -9,5 +9,5 @@
 
 for myInputFilePath
 do
-    echo "$(myGetFileVersionView "${myInputFilePath}")"
+    myListFileVersion "${myInputFilePath}"
 done

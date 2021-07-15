@@ -1,0 +1,5 @@
+review.bash: `Cases/review/Markdown/header-end-strings/invalid.md`
+Cases/review/Markdown/header-end-strings/invalid.md
+review.bash: `Cases/review/Markdown/header-end-strings/invalid.md`'s header-end is invalid.
+review.bash: `Cases/review/Markdown/header-end-strings/valid.md`
+Cases/review/Markdown/header-end-strings/valid.md
