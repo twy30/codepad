@@ -1,9 +1,0 @@
-review.bash: `Cases/review/Bash/header-end-strings`
-review.bash: Skip non-regular file `Cases/review/Bash/header-end-strings`.
-review.bash: `Cases/review/Bash/header-start-strings`
-review.bash: Skip non-regular file `Cases/review/Bash/header-start-strings`.
-review.bash: `Cases/review/Bash/invalid-by-UTF-8-BOM.bash`
-Cases/review/Bash/invalid-by-UTF-8-BOM.bash
-review.bash: `Cases/review/Bash/invalid-by-UTF-8-BOM.bash`'s header-start is invalid.
-review.bash: `Cases/review/Bash/invalid-by-UTF-8-BOM.bash`'s version is invalid.
-review.bash: `Cases/review/Bash/invalid-by-UTF-8-BOM.bash`'s header-end is invalid.

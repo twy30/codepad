@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Jul-15 01:32:10
+# Version: 2021-Aug-05 23:46:49
 
 # run.bash
 #
@@ -8,62 +8,37 @@
 cd "$(dirname "${0}")"
 
 # Purge test results.
-rm --recursive Results/*
+rm --recursive .Test-Results/*
 
 # Run tests.
 
 function myRunTest {
-    local -r myTestCommand=${1}
-    local -r myTestCase=${2}
-    local -r myTestLogName=${3:-${myTestCase//\//.}}
+    local -r myCommand=${1}
+    local -r myTestCaseName=${2}
+    local -r myLogName=${3:-${myTestCaseName//\//.}}
 
-    eval "${myTestCommand} Cases/${myTestCase}/*" > "Results/${myTestLogName}.stdout.log" 2> "Results/${myTestLogName}.stderr.log"
+    ${myCommand} .Test-Cases/${myTestCaseName}/* > ".Test-Results/${myLogName}.stdout.log" 2> ".Test-Results/${myLogName}.stderr.log"
 }
 
 ## Test `myRunTest`.
 
-myRunTest 'echo' 'Tests/run'
-myRunTest 'echo' 'Tests/run' 'Tests.run.explicit-test-log-name'
+myRunTest 'ls' 'Tests/run/myRunTest'
+myRunTest 'ls' 'Tests/run/myRunTest' 'Tests.run.myRunTest.non-default-log-name'
 
-## Test `list`.
+## Test `list.bash`.
 
-myRunTest '../list.bash' 'list/extension-names'
-myRunTest '../list.bash' 'list/folders'
-myRunTest '../list.bash' 'list/sorting'
+myRunTest '../list.bash' '_lib/valid-files' 'list.valid-files'
+myRunTest '../list.bash' 'list/excluded-items'
+myRunTest '../list.bash' 'list/folder-contents'
+myRunTest '../list.bash' 'list/MMM-to-MM'
 
-## Test `review`.
+## Test `review.bash`
 
-myRunTest '../review.bash' '_lib/Bash/version-strings' 'review.Bash.version-strings'
-myRunTest '../review.bash' '_lib/file-types' 'review.file-types'
-myRunTest '../review.bash' '_lib/Markdown/version-strings' 'review.Markdown.version-strings'
-myRunTest '../review.bash' 'review/Bash'
-myRunTest '../review.bash' 'review/Bash/header-end-strings'
-myRunTest '../review.bash' 'review/Bash/header-start-strings'
-myRunTest '../review.bash' 'review/carriage-return-characters'
-myRunTest '../review.bash' 'review/end-of-file-newlines'
-myRunTest '../review.bash' 'review/file-sizes'
-myRunTest '../review.bash' 'review/Markdown'
-myRunTest '../review.bash' 'review/Markdown/header-end-strings'
-myRunTest '../review.bash' 'review/Markdown/header-start-strings'
-myRunTest '../review.bash' 'review/spellcheck/file-contents'
-myRunTest '../review.bash' 'review/spellcheck/file-paths'
+myRunTest '../review.bash' '_lib/valid-files' 'review.valid-files'
+myRunTest '../review.bash' 'review/missing-elements'
+myRunTest '../review.bash' 'review/skipped-items'
+myRunTest '../review.bash' 'review/spellchecking'
 myRunTest '../review.bash' 'review/trailing-whitespaces'
 
-## Test `version`.
-
-myRunTest '../version.bash' '_lib/Bash/version-strings' 'version.Bash.version-strings'
-myRunTest '../version.bash' '_lib/file-types' 'version.file-types'
-myRunTest '../version.bash' '_lib/Markdown/version-strings' 'version.Markdown.version-strings'
-myRunTest '../version.bash' 'version/extension-names'
-myRunTest '../version.bash' 'version/MMM-to-MM'
-
-## Test file readability
-
-chmod u-r Cases/_lib/file-readability/unreadable.bash
-myRunTest '../list.bash' '_lib/file-readability' 'list.file-readability'
-myRunTest '../review.bash' '_lib/file-readability' 'review.file-readability'
-myRunTest '../version.bash' '_lib/file-readability' 'version.file-readability'
-chmod u+r Cases/_lib/file-readability/unreadable.bash
-
 # List test result changes.
-git status --porcelain Results/
+git status --porcelain .Test-Results/

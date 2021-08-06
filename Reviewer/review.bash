@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Jul-15 01:31:30
+# Version: 2021-Aug-05 23:03:00
 
 # review.bash [FILE]...
 #
@@ -7,103 +7,116 @@
 
 . "$(dirname "${0}")/_lib.bash"
 
-readonly myBaseName=$(basename "${0}")
+function myEchoWarning {
+    local -r myFilePath=${1}
+    local -r myMessage=${2}
 
-function myEcho {
-    local -r myString=${1}
-
-    echo "${myBaseName}: ${myString}"
+    if [ -t 1 ]
+    then
+        local -r mySelectGraphicRendition=$'\e[93m'
+        local -r mySelectGraphicRenditionReset=$'\e[m'
+    fi
+    echo "$(basename "${0}"): \`${myFilePath}\`: ${mySelectGraphicRendition}${myMessage}${mySelectGraphicRenditionReset}"
 }
 
-readonly myBashHeaderEnd=$'\n\n'
-readonly myMarkdownHeaderEnd=$'\n---\n\n'
+function myEchoMisspelledWords {
+    local -r myFilePath=${1}
+    local -r myMisspelledWords=${2}
 
-if [ -t 1 ]
-then
-    readonly myBrightYellow=$'\e[93m'
-    readonly myReset=$'\e[m'
-fi
-
-readonly myBashHeaderEndOffSet=$((${#myBashHeaderStart} + ${#myFileVersionExample} + ${#myBashHeaderEnd}))
-readonly myMarkdownHeaderEndOffset=$((${#myMarkdownHeaderStart} + ${#myFileVersionExample} + ${#myMarkdownHeaderEnd}))
-
-for myInputFilePath
-do
-    myEcho "\`${myInputFilePath}\`"
-
-    echo -n "${myInputFilePath}" | grep --color=auto --word-regexp "$(echo -n "${myInputFilePath}" | aspell --mode=none list | sort --unique)"
-
-    if [ ! -f "${myInputFilePath}" ]
+    if [ "${myMisspelledWords}" ]
     then
-        myEcho "Skip non-regular file \`${myInputFilePath}\`."
-        continue
+        myEchoWarning "${myFilePath}" "misspelling"
+        echo "${myMisspelledWords}"
+    fi
+}
+
+function myReview_bash_File {
+    local -r myFilePath=${1}
+
+    if [ "$(head --bytes=${#my_bash_HeaderStart} "${myFilePath}")" != "${my_bash_HeaderStart}" ]
+    then
+        myEchoWarning "${myFilePath}" 'header start'
     fi
 
-    if [ ! -r "${myInputFilePath}" ]
+    if [[ ! "$(myGet_bash_FileVersion "${myFilePath}")" =~ ${myVersionRegexp} ]]
     then
-        myEcho "Skip unreadable file \`${myInputFilePath}\`."
-        continue
+        myEchoWarning "${myFilePath}" 'version'
     fi
 
-    if [ ! -s "${myInputFilePath}" ]
+    local -r my_bash_HeaderEnd=$'\n\n'
+    if [ "$(head --bytes=$((${#my_bash_HeaderStart} + ${#myVersionSample} + ${#my_bash_HeaderEnd})) "${myFilePath}" | tail --bytes=${#my_bash_HeaderEnd} | od --format=x1)" != "$(echo -n "${my_bash_HeaderEnd}" | od --format=x1)" ]
     then
-        myEcho "Skip empty file \`${myInputFilePath}\`."
-        continue
+        myEchoWarning "${myFilePath}" 'header end'
+    fi
+}
+
+function myReview_md_File {
+    local -r myFilePath=${1}
+
+    if [ "$(head --bytes=${#my_md_HeaderStart} "${myFilePath}")" != "${my_md_HeaderStart}" ]
+    then
+        myEchoWarning "${myFilePath}" 'header start'
     fi
 
-    aspell --mode=none list < "${myInputFilePath}" | sort --unique | grep --color=auto --file=- --line-number --word-regexp "${myInputFilePath}"
-
-    if [ "$(tail --bytes=1 "${myInputFilePath}" | hexdump -C)" != $'00000000  0a                                                |.|\n00000001' ]
+    if [[ ! "$(myGet_md_FileVersion "${myFilePath}")" =~ ${myVersionRegexp} ]]
     then
-        myEcho "\`${myInputFilePath}\` ${myBrightYellow}ends with 0 newline${myReset}."
-    elif [ "$(tail --bytes=2 "${myInputFilePath}" | hexdump -C)" == $'00000000  0a 0a                                             |..|\n00000002' ]
-    then
-        myEcho "\`${myInputFilePath}\` ${myBrightYellow}ends with more than 1 newline${myReset}."
+        myEchoWarning "${myFilePath}" 'version'
     fi
 
-    if grep --silent $'\r' "${myInputFilePath}"
+    local -r my_md_HeaderEnd=$'\n---\n\n'
+    if [ "$(head --bytes=$((${#my_md_HeaderStart} + ${#myVersionSample} + ${#my_md_HeaderEnd})) "${myFilePath}" | tail --bytes=${#my_md_HeaderEnd} | od --format=x1)" != "$(echo -n "${my_md_HeaderEnd}" | od --format=x1)" ]
     then
-        myEcho "\`${myInputFilePath}\` ${myBrightYellow}contains at least 1 carriage return${myReset}."
+        myEchoWarning "${myFilePath}" 'header end'
     fi
+}
 
-    if grep --regexp='\s$' --silent "${myInputFilePath}"
-    then
-        myEcho "\`${myInputFilePath}\` ${myBrightYellow}contains at least 1 trailing whitespace${myReset}."
-    fi
+function myReviewCommand {
+    local -r myNewline=$'\n'
+    local myFilePath
+    local myMisspelledWords
+    for myFilePath
+    do
+        myMisspelledWords=$(echo -n "${myFilePath}" | aspell --mode=none list | sort --unique)
+        myEchoMisspelledWords "${myFilePath}" "${myMisspelledWords}"
+        if [ "${myMisspelledWords}" ]
+        then
+            echo -n "${myFilePath}" | grep --color=auto --word-regexp "${myMisspelledWords}"
+        fi
 
-    case "$(myGetExtensionName "${myInputFilePath}")" in
-        'bash')
-            if [ "$(head --bytes=${#myBashHeaderStart} "${myInputFilePath}")" != "${myBashHeaderStart}" ]
-            then
-                myEcho "\`${myInputFilePath}\`'s ${myBrightYellow}header-start is invalid${myReset}."
-            fi
+        if [ ! -f "${myFilePath}" ]
+        then
+            continue
+        fi
 
-            if [[ ! "$(myGetBashFileVersion "${myInputFilePath}")" =~ $myFileVersionRegexp ]]
-            then
-                myEcho "\`${myInputFilePath}\`'s ${myBrightYellow}version is invalid${myReset}."
-            fi
+        if [ ! -s "${myFilePath}" ]
+        then
+            continue
+        fi
 
-            if [ "$(head --bytes=${myBashHeaderEndOffSet} "${myInputFilePath}" | tail --bytes=${#myBashHeaderEnd} | hexdump -C)" != $'00000000  0a 0a                                             |..|\n00000002' ]
-            then
-                myEcho "\`${myInputFilePath}\`'s ${myBrightYellow}header-end is invalid${myReset}."
-            fi
-        ;;
+        myMisspelledWords=$(aspell --mode=none list < "${myFilePath}" | sort --unique)
+        myEchoMisspelledWords "${myFilePath}" "${myMisspelledWords}"
+        if [ "${myMisspelledWords}" ]
+        then
+            echo -n "${myMisspelledWords}" | grep --color=auto --file=- --line-number --word-regexp "${myFilePath}"
+        fi
 
-        'md')
-            if [ "$(head --bytes=${#myMarkdownHeaderStart} "${myInputFilePath}")" != "${myMarkdownHeaderStart}" ]
-            then
-                myEcho "\`${myInputFilePath}\`'s ${myBrightYellow}header-start is invalid${myReset}."
-            fi
+        if [ "$(tail --bytes=${#myNewline} "${myFilePath}" | od --format=x1)" != "$(echo -n "${myNewline}" | od --format=x1)" ]
+        then
+            myEchoWarning "${myFilePath}" 'end-of-file newline'
+        fi
 
-            if [[ ! "$(myGetMarkdownFileVersion "${myInputFilePath}")" =~ $myFileVersionRegexp ]]
-            then
-                myEcho "\`${myInputFilePath}\`'s ${myBrightYellow}version is invalid${myReset}."
-            fi
+        if grep --silent $'\r' "${myFilePath}"
+        then
+            myEchoWarning "${myFilePath}" 'carriage return'
+        fi
 
-            if [ "$(head --bytes=${myMarkdownHeaderEndOffset} "${myInputFilePath}" | tail --bytes=${#myMarkdownHeaderEnd} | hexdump -C)" != $'00000000  0a 2d 2d 2d 0a 0a                                 |.---..|\n00000006' ]
-            then
-                myEcho "\`${myInputFilePath}\`'s ${myBrightYellow}header-end is invalid${myReset}."
-            fi
-        ;;
-    esac
-done
+        if grep --regexp='[[:space:]]$' --silent "${myFilePath}"
+        then
+            myEchoWarning "${myFilePath}" 'trailing whitespace'
+        fi
+
+        myActByFileType "${myFilePath}" 'myReview_' '_File'
+    done
+}
+
+myReviewCommand "${@}"

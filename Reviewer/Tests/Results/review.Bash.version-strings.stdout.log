@@ -1,7 +1,0 @@
-review.bash: `Cases/_lib/Bash/version-strings/invalid-MM-11.bash`
-review.bash: `Cases/_lib/Bash/version-strings/invalid-MM-11.bash`'s version is invalid.
-review.bash: `Cases/_lib/Bash/version-strings/invalid-MM-11.bash`'s header-end is invalid.
-review.bash: `Cases/_lib/Bash/version-strings/invalid-MMM-XXX.bash`
-Cases/_lib/Bash/version-strings/invalid-MMM-XXX.bash
-review.bash: `Cases/_lib/Bash/version-strings/invalid-MMM-XXX.bash`'s version is invalid.
-review.bash: `Cases/_lib/Bash/version-strings/valid.bash`

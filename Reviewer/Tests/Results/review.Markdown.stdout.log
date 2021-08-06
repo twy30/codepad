@@ -1,9 +1,0 @@
-review.bash: `Cases/review/Markdown/header-end-strings`
-review.bash: Skip non-regular file `Cases/review/Markdown/header-end-strings`.
-review.bash: `Cases/review/Markdown/header-start-strings`
-review.bash: Skip non-regular file `Cases/review/Markdown/header-start-strings`.
-review.bash: `Cases/review/Markdown/invalid-by-UTF-8-BOM.md`
-Cases/review/Markdown/invalid-by-UTF-8-BOM.md
-review.bash: `Cases/review/Markdown/invalid-by-UTF-8-BOM.md`'s header-start is invalid.
-review.bash: `Cases/review/Markdown/invalid-by-UTF-8-BOM.md`'s version is invalid.
-review.bash: `Cases/review/Markdown/invalid-by-UTF-8-BOM.md`'s header-end is invalid.

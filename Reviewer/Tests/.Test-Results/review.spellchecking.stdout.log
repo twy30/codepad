@@ -1,0 +1,18 @@
+review.bash: `.Test-Cases/review/spellchecking/correct-filename-incorrect-contents`: misspelling
+bardog
+foofox
+4:foofox
+9:bardog.
+review.bash: `.Test-Cases/review/spellchecking/incorrectFilename-correctContents`: misspelling
+correctContents
+incorrectFilename
+.Test-Cases/review/spellchecking/incorrectFilename-correctContents
+review.bash: `.Test-Cases/review/spellchecking/incorrectFilename-incorrectContents`: misspelling
+incorrectContents
+incorrectFilename
+.Test-Cases/review/spellchecking/incorrectFilename-incorrectContents
+review.bash: `.Test-Cases/review/spellchecking/incorrectFilename-incorrectContents`: misspelling
+bardog
+foofox
+4:foofox
+9:bardog.
