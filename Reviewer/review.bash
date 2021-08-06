@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Aug-05 23:03:00
+# Version: 2021-Aug-06 16:55:29
 
 # review.bash [FILE]...
 #
@@ -71,9 +71,9 @@ function myReview_md_File {
 }
 
 function myReviewCommand {
-    local -r myNewline=$'\n'
     local myFilePath
     local myMisspelledWords
+    local -r myNewline=$'\n'
     for myFilePath
     do
         myMisspelledWords=$(echo -n "${myFilePath}" | aspell --mode=none list | sort --unique)

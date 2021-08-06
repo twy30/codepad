@@ -1,5 +1,5 @@
 ---
-Version: 2021-Aug-06 01:23:43
+Version: 2021-Aug-06 16:26:39
 ---
 
 This folder contains the "Reviewer" tools and tests.
@@ -23,10 +23,14 @@ tools depend on these programs:
 * `dirname`
 * `echo`
 * `find`
-* `git`
 * `grep`
 * `head`
 * `od`
-* `rm`
 * `sort`
 * `tail`
+
+The Reviewer tests depend on these programs:
+
+* `git`
+* `ls`
+* `rm`
