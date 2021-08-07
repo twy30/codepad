@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Aug-05 20:01:50
+# Version: 2021-Aug-06 21:53:11
 
 # Shared code.
 
@@ -9,15 +9,19 @@ function myActByFileType {
     local -r myFunctionNameSuffix=${3}
 
     local -r myFileBaseName=$(basename "${myFilePath}")
-    if [[ "${myFileBaseName}" != *.* ]]
+    if [[ "${myFileBaseName}" = *.* ]]
     then
-        return
-    fi
-
-    local -r myFileExtensionName=${myFileBaseName##*.}
-    if [[ "${myFileExtensionName}" =~ ^[[:alpha:]]+$ ]]
-    then
-        ${myFunctionNamePrefix}${myFileExtensionName}${myFunctionNameSuffix} "${myFilePath}"
+        local -r myFileExtensionName=${myFileBaseName##*.}
+        if [[ "${myFileExtensionName}" =~ ^[[:alpha:]]+$ ]]
+        then
+            local -r myFunctionName=${myFunctionNamePrefix}${myFileExtensionName}${myFunctionNameSuffix}
+            if [ "$(type -t "${myFunctionName}")" = 'function' ]
+            then
+                "${myFunctionName}" "${myFilePath}"
+            else
+                echo "$(basename "${0}"): no \`${myFunctionName}\`" >&2
+            fi
+        fi
     fi
 }
 

@@ -1,14 +1,13 @@
 #!/bin/bash
-# Version: 2021-Aug-05 20:41:45
+# Version: 2021-Aug-06 21:51:25
 
 # list.bash [FILE]...
 #
 # List and sort FILE by its `Version` property.  If FILE is a folder,
-# its contents will be listed recursively.
+# its contents will be listed recursively;
 #
-# `.?*`, `bin`, and `obj` folders are excluded.
-#
-# `*.log` files are excluded.
+# * `.?*`, `bin`, and `obj` folders are excluded.
+# * `*.log` files are excluded.
 
 . "$(dirname "${0}")/_lib.bash"
 

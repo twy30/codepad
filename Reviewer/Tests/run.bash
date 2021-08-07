@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Aug-05 23:46:49
+# Version: 2021-Aug-06 21:50:56
 
 # run.bash
 #
@@ -27,6 +27,7 @@ myRunTest 'ls' 'Tests/run/myRunTest' 'Tests.run.myRunTest.non-default-log-name'
 
 ## Test `list.bash`.
 
+myRunTest '../list.bash' '_lib/unsupported-files' 'list.unsupported-files'
 myRunTest '../list.bash' '_lib/valid-files' 'list.valid-files'
 myRunTest '../list.bash' 'list/excluded-items'
 myRunTest '../list.bash' 'list/folder-contents'
@@ -34,6 +35,7 @@ myRunTest '../list.bash' 'list/MMM-to-MM'
 
 ## Test `review.bash`
 
+myRunTest '../review.bash' '_lib/unsupported-files' 'review.unsupported-files'
 myRunTest '../review.bash' '_lib/valid-files' 'review.valid-files'
 myRunTest '../review.bash' 'review/missing-elements'
 myRunTest '../review.bash' 'review/skipped-items'
