@@ -14,7 +14,7 @@ Version: yyyy-MMM-dd HH:mm:ss
 
 # Dependencies
 
-As of commit ``, the Reviewer
+As of commit `65a2277149f3b2ae13afe40c25cdd3d4b6fa3363`, the Reviewer
 tools depend on these programs:
 
 * `aspell`
