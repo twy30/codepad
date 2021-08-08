@@ -1,0 +1,11 @@
+review.bash: `.Test-Cases/_lib/unsupported-files/file.log`: end-of-file newline
+review.bash: `.Test-Cases/_lib/unsupported-files/file.nojekyll`: misspelling
+bb22830e4c63fe4fc40d9e6210b510828c245834e07b6c3157cce51bf1ec4b0058b04f5396f5092d325ecb167d00a3893b3a83976d6c081ed152bf41046ded01  -
+nojekyll
+.Test-Cases/_lib/unsupported-files/file.nojekyll
+review.bash: `.Test-Cases/_lib/unsupported-files/file.nojekyll`: end-of-file newline
+review.bash: `.Test-Cases/_lib/unsupported-files/file.png`: misspelling
+a3ef22235351b8a90cbdeb9ca6c8ae4cf95992464be95d89cc7fd1c5cd18967336073a1bc9fcc6a8c84c4297c7f5d747d778960cd520f65ec261b8ca02aada9f  -
+png
+.Test-Cases/_lib/unsupported-files/file.png
+review.bash: `.Test-Cases/_lib/unsupported-files/file.png`: end-of-file newline

@@ -1,17 +1,21 @@
 review.bash: `.Test-Cases/review/spellchecking/correct-filename-incorrect-contents`: misspelling
+e43c1b9aa676179b2a2f98c3d99f24d9ab3232f11a3c8af07201d84a9b0b99ebae2b0f82a044fe0fdf07e385453f7bbc16d772ee69f5dc052eb64f73b5a626db  -
 bardog
 foofox
 4:foofox
 9:bardog.
 review.bash: `.Test-Cases/review/spellchecking/incorrectFilename-correctContents`: misspelling
+cae67697830711d799be578a662b5590dc53d1438ebc4bcf0857d27804ef61e881680e3633f3b43fca8a6cea1a762ef3945ce5a7efd0235136459f93b1d79839  -
 correctContents
 incorrectFilename
 .Test-Cases/review/spellchecking/incorrectFilename-correctContents
 review.bash: `.Test-Cases/review/spellchecking/incorrectFilename-incorrectContents`: misspelling
+e37b367c20005d3bca10f6ed2d5205ec21ddfc12c26b05c35d626cf1f5177ce33b1e768e319cfb251c8126d66c187db8d069621cb283026125e3c4db5834ac0b  -
 incorrectContents
 incorrectFilename
 .Test-Cases/review/spellchecking/incorrectFilename-incorrectContents
 review.bash: `.Test-Cases/review/spellchecking/incorrectFilename-incorrectContents`: misspelling
+e43c1b9aa676179b2a2f98c3d99f24d9ab3232f11a3c8af07201d84a9b0b99ebae2b0f82a044fe0fdf07e385453f7bbc16d772ee69f5dc052eb64f73b5a626db  -
 bardog
 foofox
 4:foofox

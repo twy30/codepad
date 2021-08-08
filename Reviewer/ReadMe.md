@@ -1,5 +1,5 @@
 ---
-Version: 2021-Aug-06 22:05:03
+Version: 2021-Aug-08 02:16:14
 ---
 
 This folder contains the "Reviewer" tools and tests.
@@ -14,7 +14,7 @@ Version: yyyy-MMM-dd HH:mm:ss
 
 # Dependencies
 
-As of commit `5fb4e50c42a52e09bcf34188ef399a78cca0facc`, the Reviewer
+As of commit ``, the Reviewer
 tools depend on these programs:
 
 * `aspell`
@@ -26,6 +26,7 @@ tools depend on these programs:
 * `grep`
 * `head`
 * `od`
+* `sha512sum`
 * `sort`
 * `tail`
 

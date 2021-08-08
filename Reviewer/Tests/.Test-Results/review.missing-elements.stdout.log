@@ -1,9 +1,33 @@
+review.bash: `.Test-Cases/review/missing-elements/file`: end-of-file newline
+review.bash: `.Test-Cases/review/missing-elements/file.bash`: end-of-file newline
 review.bash: `.Test-Cases/review/missing-elements/file.bash`: header start
 review.bash: `.Test-Cases/review/missing-elements/file.bash`: version
 review.bash: `.Test-Cases/review/missing-elements/file.bash`: header end
+review.bash: `.Test-Cases/review/missing-elements/file.cs`: end-of-file newline
+review.bash: `.Test-Cases/review/missing-elements/file.cs`: header start
+review.bash: `.Test-Cases/review/missing-elements/file.cs`: version
+review.bash: `.Test-Cases/review/missing-elements/file.cs`: header end
+review.bash: `.Test-Cases/review/missing-elements/file.csproj`: misspelling
+54098f0442c0bc062c97eee2e41cbfe05b5269208c2d7cd6fe44cc0584e001f17c1f251419a6549a8b424c042dc1e1bedf09833093a5e9eb991b4da6188cdb70  -
+csproj
+.Test-Cases/review/missing-elements/file.csproj
+review.bash: `.Test-Cases/review/missing-elements/file.csproj`: end-of-file newline
+review.bash: `.Test-Cases/review/missing-elements/file.csproj`: header start
+review.bash: `.Test-Cases/review/missing-elements/file.csproj`: version
+review.bash: `.Test-Cases/review/missing-elements/file.csproj`: header end
+review.bash: `.Test-Cases/review/missing-elements/file.html`: misspelling
+e857bd1285b0aa96736ff3fb2c64e9a77ed645c6b50e31ae6775368b3463b8b9fe607ee51091472175e4ad29f1dab1c6c16cf4ad7f43c9ed3b719d0081bc78bb  -
+html
+.Test-Cases/review/missing-elements/file.html
+review.bash: `.Test-Cases/review/missing-elements/file.html`: end-of-file newline
+review.bash: `.Test-Cases/review/missing-elements/file.html`: header start
+review.bash: `.Test-Cases/review/missing-elements/file.html`: version
+review.bash: `.Test-Cases/review/missing-elements/file.html`: header end
 review.bash: `.Test-Cases/review/missing-elements/file.md`: misspelling
+a6f2c4861c50236322c64f3dd656b0934e27140365a9c0574a77df9ed3562b615052ef3f30da9fd342edab876575d026918d7c9ede8e5f7bbaf2c3e233548644  -
 md
 .Test-Cases/review/missing-elements/file.md
+review.bash: `.Test-Cases/review/missing-elements/file.md`: end-of-file newline
 review.bash: `.Test-Cases/review/missing-elements/file.md`: header start
 review.bash: `.Test-Cases/review/missing-elements/file.md`: version
 review.bash: `.Test-Cases/review/missing-elements/file.md`: header end

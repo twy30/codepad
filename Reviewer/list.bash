@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Aug-06 21:51:25
+# Version: 2021-Aug-08 01:54:46
 
 # list.bash [FILE]...
 #
@@ -7,7 +7,7 @@
 # its contents will be listed recursively;
 #
 # * `.?*`, `bin`, and `obj` folders are excluded.
-# * `*.log` files are excluded.
+# * `*.log`, `*.nojekyll` and '*.png' files are excluded.
 
 . "$(dirname "${0}")/_lib.bash"
 
@@ -20,7 +20,7 @@ function myListCommand {
         then
             find "${myFilePath}" \
                 \( -type d \( -name '.?*' -o -name 'bin' -o -name 'obj' \) -prune \) \
-                -o \( -type f \! -name '*.log' -print0 \) \
+                -o \( -type f \! \( -name '*.log' -o -name '*.nojekyll' -o -name '*.png' \) -print0 \) \
             | ( mapfile -d ''; myListCommand "${MAPFILE[@]}" )
         elif [ -f "${myFilePath}" ]
         then

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Aug-06 21:50:56
+# Version: 2021-Aug-08 03:48:14
 
 # run.bash
 #
@@ -17,7 +17,7 @@ function myRunTest {
     local -r myTestCaseName=${2}
     local -r myLogName=${3:-${myTestCaseName//\//.}}
 
-    ${myCommand} .Test-Cases/${myTestCaseName}/* > ".Test-Results/${myLogName}.stdout.log" 2> ".Test-Results/${myLogName}.stderr.log"
+    "${myCommand}" .Test-Cases/${myTestCaseName}/* > ".Test-Results/${myLogName}.stdout.log" 2> ".Test-Results/${myLogName}.stderr.log"
 }
 
 ## Test `myRunTest`.
@@ -29,7 +29,7 @@ myRunTest 'ls' 'Tests/run/myRunTest' 'Tests.run.myRunTest.non-default-log-name'
 
 myRunTest '../list.bash' '_lib/unsupported-files' 'list.unsupported-files'
 myRunTest '../list.bash' '_lib/valid-files' 'list.valid-files'
-myRunTest '../list.bash' 'list/excluded-items'
+myRunTest '../list.bash' 'list/excluded-folders'
 myRunTest '../list.bash' 'list/folder-contents'
 myRunTest '../list.bash' 'list/MMM-to-MM'
 
