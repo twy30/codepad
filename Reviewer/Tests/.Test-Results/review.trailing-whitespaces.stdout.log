@@ -1,16 +1,4 @@
-review.bash: `.Test-Cases/review/trailing-whitespaces/carriage-return`: misspelling
-2843c7483345c9a586e1f576d6d91787938ab341040543395e2e2fd2a8c518af39c767fb2ba18abe725610ce4217d1b271f61f98afa308e51c25c4f10f880f12  -
-whitespaces
-.Test-Cases/review/trailing-whitespaces/carriage-return
 review.bash: `.Test-Cases/review/trailing-whitespaces/carriage-return`: carriage return
 review.bash: `.Test-Cases/review/trailing-whitespaces/carriage-return`: trailing whitespace
-review.bash: `.Test-Cases/review/trailing-whitespaces/horizontal-tab`: misspelling
-2843c7483345c9a586e1f576d6d91787938ab341040543395e2e2fd2a8c518af39c767fb2ba18abe725610ce4217d1b271f61f98afa308e51c25c4f10f880f12  -
-whitespaces
-.Test-Cases/review/trailing-whitespaces/horizontal-tab
 review.bash: `.Test-Cases/review/trailing-whitespaces/horizontal-tab`: trailing whitespace
-review.bash: `.Test-Cases/review/trailing-whitespaces/space`: misspelling
-2843c7483345c9a586e1f576d6d91787938ab341040543395e2e2fd2a8c518af39c767fb2ba18abe725610ce4217d1b271f61f98afa308e51c25c4f10f880f12  -
-whitespaces
-.Test-Cases/review/trailing-whitespaces/space
 review.bash: `.Test-Cases/review/trailing-whitespaces/space`: trailing whitespace

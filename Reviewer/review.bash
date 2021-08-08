@@ -1,35 +1,11 @@
 #!/bin/bash
-# Version: 2021-Aug-08 05:36:44
+# Version: 2021-Aug-08 06:40:41
 
 # review.bash [FILE]...
 #
 # List feedback for FILE.
 
 . "$(dirname "${0}")/_lib.bash"
-
-function myEchoWarning {
-    local -r myFilePath=${1}
-    local -r myMessage=${2}
-
-    if [ -t 1 ]
-    then
-        local -r mySelectGraphicRendition=$'\e[93m'
-        local -r mySelectGraphicRenditionReset=$'\e[m'
-    fi
-    myEcho "\`${myFilePath}\`: ${mySelectGraphicRendition}${myMessage}${mySelectGraphicRenditionReset}"
-}
-
-function myEchoMisspelledWords {
-    local -r myFilePath=${1}
-    local -r myMisspelledWords=${2}
-
-    if [ "${myMisspelledWords}" ]
-    then
-        myEchoWarning "${myFilePath}" "misspelling"
-        echo -n "${myMisspelledWords}" | sha512sum
-        echo "${myMisspelledWords}"
-    fi
-}
 
 function myReview_bash_File {
     local -r myFilePath=${1}
@@ -193,27 +169,12 @@ function myReview_md_File {
 
 function myReviewCommand {
     local myFilePath
-    local myMisspelledWords
     local -r myNewline=$'\n'
     for myFilePath
     do
-        myMisspelledWords=$(echo -n "${myFilePath}" | aspell --mode=none list | sort --unique)
-        myEchoMisspelledWords "${myFilePath}" "${myMisspelledWords}"
-        if [ "${myMisspelledWords}" ]
-        then
-            echo -n "${myFilePath}" | grep --color=auto --word-regexp "${myMisspelledWords}"
-        fi
-
         if [ ! -f "${myFilePath}" ]
         then
             continue
-        fi
-
-        myMisspelledWords=$(aspell --mode=none list < "${myFilePath}" | sort --unique)
-        myEchoMisspelledWords "${myFilePath}" "${myMisspelledWords}"
-        if [ "${myMisspelledWords}" ]
-        then
-            echo -n "${myMisspelledWords}" | grep --color=auto --file=- --line-number --word-regexp "${myFilePath}"
         fi
 
         if [ "$(tail --bytes=${#myNewline} "${myFilePath}" | od --format=x1)" != "$(echo -n "${myNewline}" | od --format=x1)" ]

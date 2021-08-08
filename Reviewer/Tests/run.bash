@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Aug-08 03:48:14
+# Version: 2021-Aug-08 06:45:44
 
 # run.bash
 #
@@ -29,7 +29,7 @@ myRunTest 'ls' 'Tests/run/myRunTest' 'Tests.run.myRunTest.non-default-log-name'
 
 myRunTest '../list.bash' '_lib/unsupported-files' 'list.unsupported-files'
 myRunTest '../list.bash' '_lib/valid-files' 'list.valid-files'
-myRunTest '../list.bash' 'list/excluded-folders'
+myRunTest '../list.bash' 'list/excluded-items'
 myRunTest '../list.bash' 'list/folder-contents'
 myRunTest '../list.bash' 'list/MMM-to-MM'
 
@@ -39,8 +39,14 @@ myRunTest '../review.bash' '_lib/unsupported-files' 'review.unsupported-files'
 myRunTest '../review.bash' '_lib/valid-files' 'review.valid-files'
 myRunTest '../review.bash' 'review/missing-elements'
 myRunTest '../review.bash' 'review/skipped-items'
-myRunTest '../review.bash' 'review/spellchecking'
 myRunTest '../review.bash' 'review/trailing-whitespaces'
+
+## Test `spellcheck.bash`
+
+myRunTest '../spellcheck.bash' '_lib/unsupported-files' 'spellcheck.unsupported-files'
+myRunTest '../spellcheck.bash' '_lib/valid-files' 'spellcheck.valid-files'
+myRunTest '../spellcheck.bash' 'spellcheck/files'
+myRunTest '../spellcheck.bash' 'spellcheck/folders'
 
 # List test result changes.
 git status --porcelain .Test-Results/

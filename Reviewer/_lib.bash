@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version: 2021-Aug-08 01:52:02
+# Version: 2021-Aug-08 06:40:30
 
 # Shared code.
 
@@ -29,6 +29,18 @@ function myActByFileType {
             fi
         fi
     fi
+}
+
+function myEchoWarning {
+    local -r myFilePath=${1}
+    local -r myMessage=${2}
+
+    if [ -t 1 ]
+    then
+        local -r mySelectGraphicRendition=$'\e[93m'
+        local -r mySelectGraphicRenditionReset=$'\e[m'
+    fi
+    myEcho "\`${myFilePath}\`: ${mySelectGraphicRendition}${myMessage}${mySelectGraphicRenditionReset}"
 }
 
 readonly myVersionSample='yyyy-MMM-dd HH:mm:ss'
