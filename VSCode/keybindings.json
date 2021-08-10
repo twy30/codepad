@@ -1,0 +1,72 @@
+[
+    {
+        "key": "ctrl+, ,",
+        "command": "workbench.action.openSettings"
+    },
+    {
+        "key": "ctrl+, ctrl+p",
+        "command": "copyRelativeFilePath"
+    },
+    {
+        "key": "ctrl+, ctrl+t",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}_${CURRENT_HOUR}-${CURRENT_MINUTE}-${CURRENT_SECOND}"
+        },
+        "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+, ctrl+w",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "git w "
+        },
+        "when": "terminalCount > 0"
+    },
+    {
+        "key": "ctrl+, d",
+        "command": "dotnet.test.debugTestsInContext",
+        "when": "editorFocus && editorLangId == 'csharp'"
+    },
+    {
+        "key": "ctrl+, f5",
+        "command": "workbench.action.tasks.test"
+    },
+    {
+        "key": "ctrl+, l",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "```Log\n${CLIPBOARD}\n```\n"
+        },
+        "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+, p",
+        "command": "copyFilePath"
+    },
+    {
+        "key": "ctrl+, r",
+        "command": "dotnet.test.runTestsInContext",
+        "when": "editorFocus && editorLangId == 'csharp'"
+    },
+    {
+        "key": "ctrl+, t",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "${CURRENT_YEAR}-${CURRENT_MONTH_NAME_SHORT}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
+        },
+        "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+, w",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "git w\r"
+        },
+        "when": "terminalCount > 0"
+    },
+    {
+        "key": "ctrl+,",
+        "command": "-workbench.action.openSettings"
+    }
+]
