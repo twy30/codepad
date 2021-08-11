@@ -16,14 +16,6 @@
         "when": "editorFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+, ctrl+w",
-        "command": "workbench.action.terminal.sendSequence",
-        "args": {
-            "text": "git w "
-        },
-        "when": "terminalCount > 0"
-    },
-    {
         "key": "ctrl+, d",
         "command": "dotnet.test.debugTestsInContext",
         "when": "editorFocus && editorLangId == 'csharp'"
