@@ -1,0 +1,2 @@
+review.bash: `Test-Cases/skipping/empty-file`: empty
+review.bash: `Test-Cases/skipping/folder`: folder

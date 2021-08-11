@@ -1,3 +1,0 @@
-review.bash: `.Test-Cases/_lib/unsupported-files/file.log`: end-of-file newline
-review.bash: `.Test-Cases/_lib/unsupported-files/file.nojekyll`: end-of-file newline
-review.bash: `.Test-Cases/_lib/unsupported-files/file.png`: end-of-file newline

@@ -1,4 +1,0 @@
-review.bash: `.Test-Cases/review/trailing-whitespaces/carriage-return`: carriage return
-review.bash: `.Test-Cases/review/trailing-whitespaces/carriage-return`: trailing whitespace
-review.bash: `.Test-Cases/review/trailing-whitespaces/horizontal-tab`: trailing whitespace
-review.bash: `.Test-Cases/review/trailing-whitespaces/space`: trailing whitespace
