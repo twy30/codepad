@@ -2,21 +2,24 @@ This folder contains the "Reviewer" tools and tests.
 
 # Dependencies
 
-As of commit `c3507b543139c217d2a2f1d42ab74aadd4af909f`, the Reviewer
+As of commit ``, the Reviewer
 tools depend on these programs:
 
 * aspell
 * basename
 * bash
+* dirname
 * echo
+* git
 * grep
 * head
 * od
+* pwd
+* realpath
+* sha512sum
 * sort
 * tail
 
 The Reviewer tests depend on these programs:
 
-* dirname
-* git
 * rm

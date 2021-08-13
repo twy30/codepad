@@ -4,6 +4,8 @@
 #
 # List feedback for FILE.
 
+. "$(dirname "${0}")/_lib.bash"
+
 function myEchoWarning {
     local -r myFilePath=${1}
     local -r myMessage=${2}
@@ -13,7 +15,7 @@ function myEchoWarning {
         local -r mySelectGraphicRendition=$'\e[93m'
         local -r mySelectGraphicRenditionReset=$'\e[m'
     fi
-    echo "$(basename "${0}"): \`${myFilePath}\`: ${mySelectGraphicRendition}${myMessage}${mySelectGraphicRenditionReset}"
+    myEcho "\`${myFilePath}\`: ${mySelectGraphicRendition}${myMessage}${mySelectGraphicRenditionReset}"
 }
 
 function myEchoMisspelledWords {
@@ -37,7 +39,6 @@ function myReviewCommand {
 
         if [ ! -f "${myFilePath}" ]
         then
-            myEchoWarning "${myFilePath}" 'folder'
             continue
         fi
 

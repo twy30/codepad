@@ -1,8 +1,0 @@
-review.bash: `Test-Cases/spellchecking/contents`: misspelling
-bardog
-foofox
-1:The quick brown foofox
-3:the lazy bardog.
-review.bash: `Test-Cases/spellchecking/fileXname`: misspelling
-fileXname
-Test-Cases/spellchecking/fileXname

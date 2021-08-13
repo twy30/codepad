@@ -14,17 +14,20 @@ rm --recursive Test-Results/*
 function myRunTest {
     local -r myCommand=${1}
     local -r myTestCaseName=${2}
+    local -r myLogName=${3:-${myTestCaseName//\//.}}
 
-    local -r myLogName=${myTestCaseName//\//.}
     "${myCommand}" Test-Cases/"${myTestCaseName}"/* > "Test-Results/${myLogName}.stdout.log" 2> "Test-Results/${myLogName}.stderr.log"
 }
 
-myRunTest '../review.bash' 'baseline'
-myRunTest '../review.bash' 'file-end-bytes'
-myRunTest '../review.bash' 'file-start-bytes'
-myRunTest '../review.bash' 'skipping'
-myRunTest '../review.bash' 'spellchecking'
-myRunTest '../review.bash' 'trailing-white-spaces'
+myRunTest '../identify.bash' '_lib/baseline' 'identify.baseline'
+myRunTest '../identify.bash' 'identify/skipping'
+
+myRunTest '../review.bash' '_lib/baseline' 'review.baseline'
+myRunTest '../review.bash' 'review/file-end-bytes'
+myRunTest '../review.bash' 'review/file-start-bytes'
+myRunTest '../review.bash' 'review/skipping'
+myRunTest '../review.bash' 'review/spellchecking'
+myRunTest '../review.bash' 'review/trailing-white-spaces'
 
 # List test result changes.
 git status --porcelain Test-Results/
