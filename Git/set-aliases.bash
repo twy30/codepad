@@ -1,7 +1,7 @@
 git config --global --remove-section alias
 
 git config --global alias.aa 'add --all'
-git config --global alias.alias 'config --get-regexp ^alias\.'
+git config --global alias.alias "config --get-regexp '^alias\.'"
 git config --global alias.bavv 'branch --all --verbose --verbose'
 git config --global alias.c commit
 git config --global alias.cddr 'clean -d --dry-run'
