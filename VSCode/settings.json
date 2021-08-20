@@ -1,7 +1,6 @@
 {
     "[markdown]": {
-        "editor.fontFamily": "'Noto Sans Mono CJK TC Regular', Consolas, 'Courier New', monospace",
-        "editor.quickSuggestions": false
+        "editor.fontFamily": "'Noto Sans Mono CJK TC Regular', Consolas, 'Courier New', monospace"
     },
     "[plaintext]": {
         "editor.fontFamily": "'Noto Sans Mono CJK TC Regular', Consolas, 'Courier New', monospace",
