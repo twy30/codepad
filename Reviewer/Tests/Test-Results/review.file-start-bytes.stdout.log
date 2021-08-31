@@ -1,5 +1,0 @@
-review.bash: `Test-Cases/review/file-start-bytes/UTF-8-BOM`: misspelling
-BOM
-UTF
-Test-Cases/review/file-start-bytes/UTF-8-BOM
-review.bash: `Test-Cases/review/file-start-bytes/UTF-8-BOM`: file-start printable

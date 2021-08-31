@@ -1,0 +1,4 @@
+validate.bash: Violation: With carriage return: `files/trailing-carriage-return`
+validate.bash: Violation: With trailing whitespace: `files/trailing-carriage-return`
+validate.bash: Violation: With trailing whitespace: `files/trailing-horizontal-tab`
+validate.bash: Violation: With trailing whitespace: `files/trailing-space`

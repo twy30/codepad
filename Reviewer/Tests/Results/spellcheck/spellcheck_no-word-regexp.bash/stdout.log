@@ -1,0 +1,12 @@
+files/The-quick-brown-0foofox0-jumps-over-the-lazy-0bardog0.md
+spellcheck.bash: Path typo(s):
+bardog
+foofox
+md
+1:The quick brown 0foofox0
+3:the lazy 0bardog0.
+8:Pack my 0bazbox0 with five dozen liquor jugs.
+spellcheck.bash: Contents typo(s):
+bardog
+bazbox
+foofox
