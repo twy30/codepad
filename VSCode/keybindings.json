@@ -8,8 +8,20 @@
         "command": "workbench.action.terminal.selectAll"
     },
     {
+        "key": "ctrl+, c",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "clear; date\r"
+        },
+        "when": "terminalCount > 0"
+    },
+    {
         "key": "ctrl+, ctrl+p",
         "command": "copyRelativeFilePath"
+    },
+    {
+        "key": "ctrl+, ctrl+s",
+        "command": "editor.action.sortLinesDescending"
     },
     {
         "key": "ctrl+, ctrl+t",
@@ -33,6 +45,14 @@
         "when": "editorFocus && editorLangId == 'csharp'"
     },
     {
+        "key": "ctrl+, d",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "git dt\r"
+        },
+        "when": "terminalCount > 0"
+    },
+    {
         "key": "ctrl+, f5",
         "command": "workbench.action.tasks.test"
     },
@@ -52,6 +72,10 @@
         "key": "ctrl+, r",
         "command": "dotnet.test.runTestsInContext",
         "when": "editorFocus && editorLangId == 'csharp'"
+    },
+    {
+        "key": "ctrl+, s",
+        "command": "editor.action.sortLinesAscending"
     },
     {
         "key": "ctrl+, t",
