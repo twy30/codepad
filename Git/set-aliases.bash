@@ -13,3 +13,4 @@ git config --global alias.rup 'remote update --prune'
 git config --global alias.rv 'remote --verbose'
 git config --global alias.s status
 git config --global alias.w '!myGitAliasW() { git add --all && git commit -m "${1:-Add & Commit All}"; }; myGitAliasW'
+git config --global alias.z '-c core.quotepath=false status'
