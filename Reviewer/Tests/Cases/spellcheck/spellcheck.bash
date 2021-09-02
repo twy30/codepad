@@ -1,2 +1,2 @@
 cd "`dirname "$0"`"
-../../../spellcheck.bash files/The-quick-brown-foofox-jumps-over-the-lazy-bardog.md
+../../../spellcheck.bash FILE/The-quick-brown-foofox-jumps-over-the-lazy-bardog.md

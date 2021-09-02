@@ -1,2 +1,2 @@
 cd "`dirname "$0"`"
-../../../validate.bash files/first-byte-UTF-8-BOM
+../../../validate.bash FILE/first-byte-UTF-8-BOM

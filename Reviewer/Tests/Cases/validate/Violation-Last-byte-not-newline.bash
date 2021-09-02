@@ -1,2 +1,2 @@
 cd "`dirname "$0"`"
-../../../validate.bash files/last-byte-not-newline
+../../../validate.bash FILE/last-byte-not-newline

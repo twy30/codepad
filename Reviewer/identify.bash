@@ -21,7 +21,7 @@ readonly myFilePath=$1
 myExitIfNotRegularFile "$myFilePath"
 readonly myRealFilePath=`realpath "$myFilePath"`
 
-# Set the working folder.  Git commands require this.
+# Set the working folder.
 cd "`dirname "$myRealFilePath"`"
 
 #

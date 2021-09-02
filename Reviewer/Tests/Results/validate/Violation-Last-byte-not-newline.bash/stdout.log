@@ -1,1 +1,1 @@
-validate.bash: Violation: Last byte not newline: `files/last-byte-not-newline`
+validate.bash: Violation: Last byte not newline: `FILE/last-byte-not-newline`

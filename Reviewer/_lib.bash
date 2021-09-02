@@ -16,22 +16,22 @@ readonly -f myEcho
 # ---
 
 function myExitIfNotReadable {
-    local -r myLocal_FilePath=$1
+    local -r myPath=$1
 
-    if [ ! -r "$myLocal_FilePath" ]
+    if [ ! -r "$myPath" ]
     then
-        myEcho "Error: Not readable: \`$myLocal_FilePath\`" >&2
+        myEcho "Error: Not readable: \`$myPath\`" >&2
         exit 1
     fi
 }
 readonly -f myExitIfNotReadable
 
 function myExitIfNotRegularFile {
-    local -r myLocal_FilePath=$1
+    local -r myPath=$1
 
-    if [ ! -f "$myLocal_FilePath" ]
+    if [ ! -f "$myPath" ]
     then
-        myEcho "Error: Not a regular file: \`$myLocal_FilePath\`" >&2
+        myEcho "Error: Not a regular file: \`$myPath\`" >&2
         exit 1
     fi
 }

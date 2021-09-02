@@ -74,7 +74,7 @@ then
 fi
 readonly myRealFolderPath=`realpath "$myFolderPath"`
 
-# Set the working folder.  Git commands require this.
+# Set the working folder.
 readonly myOriginalWorkingFolderPath=`pwd`
 cd "$myRealFolderPath"
 
@@ -84,20 +84,24 @@ myExitIfWorkingFolderNotInGitRepository "$myFolderPath"
 # Get FOLDER's files and their Git commit ages.
 declare -i myFileGitCommitAgeInSeconds
 declare -A myFileGitCommitAgesInSeconds
-function myGetFileGitCommitAgeInSeconds {
-    local -r myFilePath=$1
+if [ -v myTestFriendlySwitch ]
+then
+    function myGetFileGitCommitAgeInSeconds {
+        local -r myFilePath=$1
 
-    if [ -v myTestFriendlySwitch ]
-    then
         basename "$myFilePath"
-    else
+    }
+else
+    function myGetFileGitCommitAgeInSeconds {
+        local -r myFilePath=$1
+
         echo "$(($myNowInSeconds - `git log --format=format:%ct --max-count=1 -- "$myFilePath"`))"
-    fi
-}
+    }
+fi
 readonly -f myGetFileGitCommitAgeInSeconds
 declare -i myMaximumFileGitCommitAgeInSeconds=0
 declare -ir myNowInSeconds=`date +%s`
-mapfile -d '' < <(git ls-tree --name-only -r -z HEAD -- "$myRealFolderPath")
+mapfile -d '' < <(git ls-tree --name-only -r -z HEAD)
 for myFilePath in "${MAPFILE[@]}"
 do
     myFileGitCommitAgeInSeconds=`myGetFileGitCommitAgeInSeconds "$myFilePath"`

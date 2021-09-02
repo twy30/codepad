@@ -1,2 +1,2 @@
 cd "`dirname "$0"`"
-../../../validate.bash files/empty
+../../../validate.bash FILE/empty
