@@ -1,1 +1,1 @@
-validate.bash: Violation: First byte not printable: `FILE/first-byte-UTF-8-BOM`
+validate.bash: Violation: First byte not printable: `FILE/first-byte-not-printable_UTF-8-BOM`

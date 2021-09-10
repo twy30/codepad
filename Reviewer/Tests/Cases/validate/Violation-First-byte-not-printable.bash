@@ -1,2 +1,3 @@
-cd "`dirname "$0"`"
-../../../validate.bash FILE/first-byte-UTF-8-BOM
+. "`dirname "$0"`"/../../../../Bash/lib.bash
+myCdToInvokingFileFolder
+../../../validate.bash FILE/first-byte-not-printable_UTF-8-BOM

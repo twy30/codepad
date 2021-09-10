@@ -13,7 +13,7 @@
 # FILE must be a readable regular file.
 
 # Import the shared library.
-. "`dirname "$0"`"/_lib.bash
+. "`dirname "$0"`"/../Bash/lib.bash
 
 # Get FILE's path.
 readonly myFilePath=$1
@@ -29,10 +29,8 @@ then
     myEcho $'Path typo(s):\n'"$myPathTypos"
 fi
 
-#
 myExitIfNotRegularFile "$myFilePath"
 
-#
 myExitIfNotReadable "$myFilePath"
 
 # Spellcheck FILE's contents.

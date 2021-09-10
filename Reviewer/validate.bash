@@ -13,15 +13,13 @@
 # FILE must be a readable regular file.
 
 # Import the shared library.
-. "`dirname "$0"`"/_lib.bash
+. "`dirname "$0"`"/../Bash/lib.bash
 
 # Get FILE's path.
 readonly myFilePath=$1
 
-#
 myExitIfNotRegularFile "$myFilePath"
 
-#
 myExitIfNotReadable "$myFilePath"
 
 # Exit if FILE is empty.
@@ -46,11 +44,11 @@ fi
 # Verify that FILE does not contain carriage return.
 if grep --silent $'\r' "$myFilePath"
 then
-    myEcho "Violation: With carriage return: \`$myFilePath\`"
+    myEcho "Violation: Containing carriage return: \`$myFilePath\`"
 fi
 
 # Verify that FILE does not contain trailing whitespace.
 if grep --regexp=[[:space:]]$ --silent "$myFilePath"
 then
-    myEcho "Violation: With trailing whitespace: \`$myFilePath\`"
+    myEcho "Violation: Containing trailing whitespace: \`$myFilePath\`"
 fi

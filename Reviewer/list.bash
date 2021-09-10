@@ -27,7 +27,7 @@
 # Folder must be in a Git repository.
 
 # Import the shared library.
-. "`dirname "$0"`"/_lib.bash
+. "`dirname "$0"`"/../Bash/lib.bash
 
 # Process the arguments.
 if ! myArguments=`getopt --longoptions=minimum-Git-commit-age:,only-oldest,test-friendly --name="$myBaseName" --options=a:ot -- "$@"`
@@ -67,18 +67,13 @@ readonly myMinimumGitCommitAgeInSeconds
 
 # Get FOLDER's path.
 readonly myFolderPath=$1
-if [ ! -d "$myFolderPath" ]
-then
-    myEcho "Error: Not a folder: \`"$myFolderPath"\`" >&2
-    exit 1
-fi
+myExitIfNotFolder "$myFolderPath"
 readonly myRealFolderPath=`realpath "$myFolderPath"`
 
 # Set the working folder.
 readonly myOriginalWorkingFolderPath=`pwd`
 cd "$myRealFolderPath"
 
-#
 myExitIfWorkingFolderNotInGitRepository "$myFolderPath"
 
 # Get FOLDER's files and their Git commit ages.

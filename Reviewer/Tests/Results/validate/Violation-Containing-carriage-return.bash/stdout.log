@@ -1,0 +1,2 @@
+validate.bash: Violation: Containing carriage return: `FILE/containing-carriage-return`
+validate.bash: Violation: Containing trailing whitespace: `FILE/containing-carriage-return`

@@ -14,7 +14,7 @@
 # * FILE must not have any uncommitted change.
 
 # Import the shared library.
-. "`dirname "$0"`"/_lib.bash
+. "`dirname "$0"`"/../Bash/lib.bash
 
 # Get FILE's path.
 readonly myFilePath=$1
@@ -24,13 +24,12 @@ readonly myRealFilePath=`realpath "$myFilePath"`
 # Set the working folder.
 cd "`dirname "$myRealFilePath"`"
 
-#
 myExitIfWorkingFolderNotInGitRepository "$myFilePath"
 
 # Exit if FILE has any uncommitted change, including "untracked".
 if [ "`git status --porcelain -- "$myRealFilePath"`" ]
 then
-    myEcho "Error: With some uncommitted change: \`$myFilePath\`" >&2
+    myEcho "Error: Containing uncommitted change(s): \`$myFilePath\`" >&2
     exit 1
 fi
 

@@ -1,0 +1,2 @@
+validate.bash: Violation: Containing trailing whitespace: `FILE/Containing-trailing-whitespace/horizontal-tab`
+validate.bash: Violation: Containing trailing whitespace: `FILE/Containing-trailing-whitespace/space`
