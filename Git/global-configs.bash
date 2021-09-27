@@ -3,11 +3,14 @@ git config --global --remove-section alias
 git config --global alias.aa 'add --all'
 git config --global alias.alias "config --get-regexp '^alias\.'"
 git config --global alias.bavv 'branch --all --verbose --verbose'
+git config --global alias.bd '!myGitAliasBd() { local myBranchName=${1:-`git rev-parse --abbrev-ref=strict HEAD`}; readonly myBranchName; if [ "$myBranchName" != main ]; then git branch -m "$myBranchName" "_done-$myBranchName"; fi; }; myGitAliasBd'
+git config --global alias.bm '!myGitAliasBm() { local myBranchName=${1:-`git rev-parse --abbrev-ref=strict HEAD`}; readonly myBranchName; if [ "$myBranchName" != main ]; then git branch -m "$myBranchName" "_merged-$myBranchName"; fi; }; myGitAliasBm'
 git config --global alias.c commit
 git config --global alias.cddr 'clean -d --dry-run'
 git config --global alias.cddrX 'clean -d --dry-run -X'
 git config --global alias.co checkout
 git config --global alias.dt 'difftool --diff-filter=ad'
+git config --global alias.dtc 'difftool --cached --diff-filter=ad'
 git config --global alias.id '!myGitAliasId() { if [ -f "$1" ]; then git ls-tree --long HEAD "$1"; git log --max-count=1 -- "$1"; fi; }; myGitAliasId'
 git config --global alias.ms 'merge --squash'
 git config --global alias.rup 'remote update --prune'
