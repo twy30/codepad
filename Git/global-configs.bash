@@ -12,7 +12,7 @@ git config --global alias.co checkout
 git config --global alias.com 'checkout main'
 git config --global alias.dt 'difftool --diff-filter=ad'
 git config --global alias.dtc 'difftool --cached --diff-filter=ad'
-git config --global alias.id '!myGitAliasId() { if [ -f "$1" ]; then git ls-tree --long HEAD "$1"; git log --max-count=1 -- "$1"; fi; }; myGitAliasId'
+git config --global alias.id '!myGitAliasId() { if [ -f "$1" ]; then git ls-tree --long HEAD "$1"; git log --max-count="${2:-2}" -- "$1"; fi; }; myGitAliasId'
 git config --global alias.ms 'merge --squash'
 git config --global alias.rup 'remote update --prune'
 git config --global alias.rv 'remote --verbose'
