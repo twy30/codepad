@@ -4,10 +4,6 @@
         "command": "workbench.action.openSettings"
     },
     {
-        "key": "ctrl+, a",
-        "command": "workbench.action.terminal.selectAll"
-    },
-    {
         "key": "ctrl+, c",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
@@ -16,8 +12,21 @@
         "when": "terminalCount > 0"
     },
     {
+        "key": "ctrl+, ctrl+d",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "git dtc\r"
+        },
+        "when": "terminalCount > 0"
+    },
+    {
         "key": "ctrl+, ctrl+p",
         "command": "copyRelativeFilePath"
+    },
+    {
+        "key": "ctrl+, ctrl+r",
+        "command": "dotnet.test.debugTestsInContext",
+        "when": "editorFocus && editorLangId == 'csharp'"
     },
     {
         "key": "ctrl+, ctrl+s",
@@ -38,11 +47,6 @@
             "text": "git push\r"
         },
         "when": "terminalCount > 0"
-    },
-    {
-        "key": "ctrl+, d",
-        "command": "dotnet.test.debugTestsInContext",
-        "when": "editorFocus && editorLangId == 'csharp'"
     },
     {
         "key": "ctrl+, d",
