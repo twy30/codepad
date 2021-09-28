@@ -9,6 +9,7 @@ git config --global alias.c commit
 git config --global alias.cddr 'clean -d --dry-run'
 git config --global alias.cddrX 'clean -d --dry-run -X'
 git config --global alias.co checkout
+git config --global alias.cob 'checkout -b'
 git config --global alias.com 'checkout main'
 git config --global alias.dt 'difftool --diff-filter=ad'
 git config --global alias.dtc 'difftool --cached --diff-filter=ad'
