@@ -3,8 +3,8 @@ git config --global --remove-section alias
 git config --global alias.aa 'add --all'
 git config --global alias.alias "config --get-regexp '^alias\.'"
 git config --global alias.bavv 'branch --all --verbose --verbose'
-git config --global alias.bp1 '!myGitAlias_bp1() { git lib-PrependToNonMainBranch __1-ReadyForMain- "$1"; }; myGitAlias_bp1'
-git config --global alias.bp2 '!myGitAlias_bp2() { git lib-PrependToNonMainBranch __2-MergedToMain- "$1"; }; myGitAlias_bp2'
+git config --global alias.bp1 '!myGitAlias_bp1() { git lib-PrependToNonMainBranch __1-Ready-for-Main__- "$1"; }; myGitAlias_bp1'
+git config --global alias.bp2 '!myGitAlias_bp2() { git lib-PrependToNonMainBranch __2-Merged-to-Main__- "$1"; }; myGitAlias_bp2'
 git config --global alias.c commit
 git config --global alias.cddr 'clean -d --dry-run'
 git config --global alias.cddrX 'clean -d --dry-run -X'
