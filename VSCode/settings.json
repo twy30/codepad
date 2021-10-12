@@ -24,6 +24,8 @@
     "files.eol": "\n",
     "files.insertFinalNewline": true,
     "remote.autoForwardPorts": false,
+    "security.workspace.trust.banner": "never",
+    "security.workspace.trust.startupPrompt": "never",
     "terminal.integrated.allowChords": false,
     "terminal.integrated.fontSize": 16,
     "update.mode": "manual",
