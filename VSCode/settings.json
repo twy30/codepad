@@ -30,6 +30,7 @@
     "terminal.integrated.fontSize": 16,
     "update.mode": "manual",
     "workbench.editor.decorations.badges": false,
+    "workbench.editor.languageDetection": false,
     "workbench.editor.untitled.hint": "hidden",
     "workbench.iconTheme": null,
     "workbench.startupEditor": "none"
